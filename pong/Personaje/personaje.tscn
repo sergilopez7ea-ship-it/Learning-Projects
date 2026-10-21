@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bre6uvnnq7oly"]
+
+[ext_resource type="Texture2D" uid="uid://bjoo0pet7rp8h" path="res://assets/paddle-blue.png" id="2_0kevx"]
+
+[sub_resource type="GDScript" id="GDScript_dyh31"]
+script/source = "extends CharacterBody2D
+
+var speed = 30
+
+func _physics_process(delta):
+	if (velocity.y > 0):
+		velocity.y = velocity.y - 5
+	else: if (velocity.y < 0):
+		velocity.y = velocity.y + 5
+	else: velocity.y = 0
+	
+	if Input.is_action_pressed(\"arriba\"):
+		velocity.y = velocity.y - speed
+	else: if Input.is_action_pressed(\"abajo\"):
+		velocity.y = velocity.y + speed
+	
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		var obgeto_chocado = collision_info.get_collider()
+		if obgeto_chocado.get_parent().name == \"Escenario\":
+			velocity.y = 0
+			
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wddc5"]
+size = Vector2(104, 24)
+
+[node name="Node2D" type="Node2D" unique_id=1885151016]
+
+[node name="Jugador1" type="CharacterBody2D" parent="." unique_id=836573335]
+rotation = 1.5707964
+script = SubResource("GDScript_dyh31")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador1" unique_id=511089916]
+shape = SubResource("RectangleShape2D_wddc5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador1" unique_id=1655515718]
+texture = ExtResource("2_0kevx")

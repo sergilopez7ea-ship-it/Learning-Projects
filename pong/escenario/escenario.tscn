@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dj3dr1eiq1sh6"]
+
+[ext_resource type="Texture2D" uid="uid://bakpc86qetqps" path="res://assets/wall-horizontal.png" id="1_n6dlh"]
+[ext_resource type="Script" uid="uid://bv30elcs7e3yu" path="res://escenario/escenario.gd" id="1_y7nrw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wddc5"]
+size = Vector2(1168, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7nrw"]
+size = Vector2(1168, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnag2"]
+size = Vector2(1168, 118)
+
+[node name="Escenario" type="Node2D" unique_id=1691733580]
+script = ExtResource("1_y7nrw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=755101690]
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1017123713]
+position = Vector2(0, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=1726495824]
+texture = ExtResource("1_n6dlh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1332007553]
+shape = SubResource("RectangleShape2D_wddc5")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1545461576]
+position = Vector2(0, -300)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1532996655]
+texture = ExtResource("1_n6dlh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=722469131]
+shape = SubResource("RectangleShape2D_wddc5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1316684511]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1338417728]
+position = Vector2(-600, 0)
+rotation = 1.5707964
+texture = ExtResource("1_n6dlh")
+
+[node name="Col1" type="CollisionShape2D" parent="Area2D" unique_id=1926423850]
+position = Vector2(-649.5, 0.99999785)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_y7nrw")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=969374166]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2" unique_id=772166303]
+position = Vector2(604, -12)
+rotation = -1.5707964
+texture = ExtResource("1_n6dlh")
+
+[node name="Col2" type="CollisionShape2D" parent="Area2D2" unique_id=1414657144]
+position = Vector2(653, -12.000002)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_vnag2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://blldqcw207bbg"]
+
+[ext_resource type="Script" uid="uid://boo3d5gh4tiqx" path="res://Pelota/character_body_2d.gd" id="2_8dudj"]
+[ext_resource type="Texture2D" uid="uid://b7e3kbp50m4om" path="res://assets/ball.png" id="2_iynsd"]
+
+[sub_resource type="GDScript" id="GDScript_tcirj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wddc5"]
+
+[node name="Pelota" type="Node2D" unique_id=85636883]
+script = SubResource("GDScript_tcirj")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=804293882]
+platform_wall_layers = 1
+script = ExtResource("2_8dudj")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1947296665]
+texture = ExtResource("2_iynsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=533634362]
+shape = SubResource("CircleShape2D_wddc5")

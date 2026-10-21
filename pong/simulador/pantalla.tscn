@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b5qdagwr40jag"]
+
+[ext_resource type="PackedScene" uid="uid://dj3dr1eiq1sh6" path="res://escenario/escenario.tscn" id="1_uji6e"]
+[ext_resource type="PackedScene" uid="uid://bre6uvnnq7oly" path="res://Personaje/personaje.tscn" id="2_juf85"]
+[ext_resource type="PackedScene" uid="uid://cjx060o065de2" path="res://Personaje/rojo.tscn" id="3_tuni8"]
+[ext_resource type="PackedScene" uid="uid://blldqcw207bbg" path="res://Pelota/pelota.tscn" id="4_t4jv0"]
+
+[node name="Escena" type="Node2D" unique_id=835917237]
+
+[node name="Escenario" parent="." unique_id=1691733580 instance=ExtResource("1_uji6e")]
+
+[node name="Node2D" parent="." unique_id=1885151016 instance=ExtResource("2_juf85")]
+position = Vector2(-496, 0)
+
+[node name="Rojo" parent="." unique_id=369717170 instance=ExtResource("3_tuni8")]
+position = Vector2(496, 0)
+
+[node name="Pelota" parent="." unique_id=85636883 instance=ExtResource("4_t4jv0")]
+position = Vector2(0, -2)
+script = null

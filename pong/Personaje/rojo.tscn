@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cjx060o065de2"]
+
+[ext_resource type="Texture2D" uid="uid://ds5nn563dmtex" path="res://assets/paddle-red.png" id="1_o70kh"]
+
+[sub_resource type="GDScript" id="GDScript_wqfbx"]
+script/source = "extends CharacterBody2D
+
+var speed = 30
+
+func _physics_process(delta):
+	if (velocity.y > 0):
+		velocity.y = velocity.y - 5
+	else: if (velocity.y < 0):
+		velocity.y = velocity.y + 5
+	else: velocity.y = 0
+	
+	if Input.is_action_pressed(\"ui_up\"):
+		velocity.y = velocity.y - speed
+	else: if Input.is_action_pressed(\"ui_down\"):
+		velocity.y = velocity.y + speed
+	
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		var obgeto_chocado = collision_info.get_collider()
+		if obgeto_chocado.get_parent().name == \"Escenario\":
+			velocity.y = 0
+			
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0iqsq"]
+size = Vector2(104, 24)
+
+[node name="Rojo" type="Node2D" unique_id=369717170]
+
+[node name="Jugador1" type="CharacterBody2D" parent="." unique_id=1342937296]
+rotation = 1.5707964
+script = SubResource("GDScript_wqfbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador1" unique_id=1643021256]
+shape = SubResource("RectangleShape2D_0iqsq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador1" unique_id=2011360352]
+texture = ExtResource("1_o70kh")
